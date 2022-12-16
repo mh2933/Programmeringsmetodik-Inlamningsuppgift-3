@@ -1,0 +1,9 @@
+Inlämingsuppgift 3
+
+1.Genomför nedanstående omvandlingar mellan olika talsystem:
+
+a) 1101 0110(bas2) = osignerad 214(bas10) // signerad -42(bas10)
+b) 300(bas10) = signerad 0000 0001 0010 1100(bas10)
+c) -123(bas10) = signerad 1000 0101(bas10)
+d) 0110 1101 0111 1010(bas2) = 6d7a(hexa)
+e) 3F754B04(hexa) = 0011 1111 0111 0101 0100 1011 0000 0100(bas2)
