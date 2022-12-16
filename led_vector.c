@@ -222,3 +222,21 @@ const uint16_t blink_speed_ms)
 
 	return;
 }
+
+// blinksekvens baklänges
+void led_vector_blink_sequentially_reversed(struct led_vector* self,
+const uint16_t blink_speed_ms)
+{
+	led_vector_off(self);
+
+	for (struct led* i = self->leds + self->size; i >= self->leds; --i) 
+	{
+		led_on(i);
+		delay_ms(blink_speed_ms);
+		led_off(i);
+	}
+
+	
+
+	return;
+}

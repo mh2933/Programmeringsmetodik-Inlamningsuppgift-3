@@ -9,12 +9,13 @@
 /* globala variabler */
 static struct button b1;
 static volatile bool leds_enabled = false;
-
+static int count;
 
 ISR(PCINT0_vect)
 {
-	if (button_is_pressed(&b1))
+	if (!button_is_pressed(&b1))
 	{
+		count++;
 		leds_enabled = !leds_enabled; // Inverterar mellan true och false.
 	}
 }
@@ -46,14 +47,33 @@ int main(void)
 
 	while (1)
 	{
-	   
-	   if (leds_enabled)
+		// if satserna -> efter 5 knapptryck skiftar blinksekvensen riktning
+	   if (leds_enabled && count > 4)
 	   {
 		   led_vector_blink_sequentially(&v1, 100);
+		   
+		    if (count > 9)
+		    {
+			    count = 0;
+		    }
 	   }
-	   else
+	   if (!leds_enabled && count > 4)
 	   {
-		   led_vector_blink_colletively(&v1, 500); 
+		   led_vector_blink_sequentially(&v1, 100);
+		   
+		   if (count > 9)
+		   {
+			   count = 0;
+		   }
+	   }
+	   else if (!leds_enabled && count < 5)
+	   {
+		   led_vector_blink_sequentially_reversed(&v1, 200);
+		   
+	   }
+	   else if (leds_enabled && count < 5)
+	   {
+		    led_vector_blink_sequentially_reversed(&v1, 200);
 	   }
 	}
 

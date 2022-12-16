@@ -140,4 +140,7 @@ const uint16_t blink_speed_ms);
 void led_vector_blink_sequentially(struct led_vector* self,
 const uint16_t blink_speed_ms);
 
+void led_vector_blink_sequentially_reversed(struct led_vector* self,
+const uint16_t blink_speed_ms);
+
 #endif /* LED_VECTOR_H_ */
